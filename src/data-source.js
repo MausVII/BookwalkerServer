@@ -11,10 +11,10 @@ const Series_1 = require("./entity/Series");
 const User_1 = require("./entity/User");
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "mysql",
-    host: "elan-puente.ciuso9aldwfa.us-east-1.rds.amazonaws.com",
+    host: process.env.HOST,
     port: 3306,
     username: "admin",
-    password: "nichinichisou0607",
+    password: process.env.PASSWORD,
     database: "Bookwalker",
     synchronize: true,
     logging: false,
