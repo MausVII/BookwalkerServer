@@ -5,9 +5,9 @@ import { AppDataSource } from "./data-source"
 import { routes } from "./routes"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-// Comment
-// AppDataSource.initialize()
-// .then(() => {
+Comment
+AppDataSource.initialize()
+.then(() => {
     console.log("Data source has been initialized.")
     const app = express()
 
@@ -22,8 +22,8 @@ import cookieParser from "cookie-parser"
     app.listen(8000, () => {
         console.log("Listening on port 8000.")
     })
-// })
-// .catch( error => {
-    // console.error(error)
-// })
+})
+.catch( error => {
+    console.error(error)
+})
 

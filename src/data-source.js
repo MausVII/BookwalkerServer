@@ -12,8 +12,7 @@ const User_1 = require("./entity/User");
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "mysql",
     host: process.env.HOST,
-    // port: 3306,
-    port: 5000,
+    port: 3306,
     username: "admin",
     password: process.env.PASSWORD,
     database: "Bookwalker",
