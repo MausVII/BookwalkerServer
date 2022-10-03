@@ -19,7 +19,7 @@ AppDataSource.initialize()
     app.use(cookieParser())
 
     routes(app)
-    app.listen(8000, () => {
+    app.listen(process.env.PORT, () => {
         console.log("Listening on port 8000.")
     })
 })
