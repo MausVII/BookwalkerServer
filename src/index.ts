@@ -20,7 +20,7 @@ AppDataSource.initialize()
 
     routes(app)
     app.listen(process.env.PORT, () => {
-        console.log("Listening on port 8000.")
+        console.log(`Listening on port ${process.env.PORT}.`)
     })
 })
 .catch( error => {

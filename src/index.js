@@ -19,8 +19,8 @@ data_source_1.AppDataSource.initialize()
     }));
     app.use((0, cookie_parser_1.default)());
     (0, routes_1.routes)(app);
-    app.listen(8000, () => {
-        console.log("Listening on port 8000.");
+    app.listen(process.env.PORT, () => {
+        console.log(`Listening on port ${process.env.PORT}.`);
     });
 })
     .catch(error => {
