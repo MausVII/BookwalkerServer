@@ -7,7 +7,6 @@ const data_source_1 = require("./data-source");
 const routes_1 = require("./routes");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const cookie_parser_1 = tslib_1.__importDefault(require("cookie-parser"));
-Comment;
 data_source_1.AppDataSource.initialize()
     .then(() => {
     console.log("Data source has been initialized.");
