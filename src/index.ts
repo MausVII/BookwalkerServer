@@ -5,6 +5,7 @@ import { AppDataSource } from "./data-source"
 import { routes } from "./routes"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+console.log(process.env.RDS_HOSTNAME!)
 AppDataSource.initialize()
 .then(() => {
     console.log("Data source has been initialized.")

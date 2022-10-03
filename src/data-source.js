@@ -19,8 +19,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database: process.env.RDS_DB_NAME,
     synchronize: true,
     logging: false,
-    // entities: [Book_1.Book, User_1.User, Publisher_1.Publisher, Genre_1.Genre, Series_1.Series, Deal_1.Deal],
-    entities: [],
+    entities: [Book_1.Book, User_1.User, Publisher_1.Publisher, Genre_1.Genre, Series_1.Series, Deal_1.Deal],
     migrations: [],
     subscribers: [],
     extra: {
