@@ -12,7 +12,7 @@ AppDataSource.initialize()
 
     app.use(express.json())
     app.use(cors({
-        origin: true,
+        origin: ["http://localhost:3000", "https://master.d1im558cdd1ym1.amplifyapp.com/"],
         // Allow sending/receiving cookies
         credentials: true
     }))

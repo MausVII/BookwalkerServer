@@ -13,7 +13,7 @@ data_source_1.AppDataSource.initialize()
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
     app.use((0, cors_1.default)({
-        origin: true,
+        origin: ["http://localhost:3000", "https://master.d1im558cdd1ym1.amplifyapp.com/"],
         // Allow sending/receiving cookies
         credentials: true
     }));
