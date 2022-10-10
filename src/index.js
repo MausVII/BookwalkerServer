@@ -7,13 +7,13 @@ const data_source_1 = require("./data-source");
 const routes_1 = require("./routes");
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const cookie_parser_1 = tslib_1.__importDefault(require("cookie-parser"));
-console.log(process.env.RDS_HOSTNAME);
 data_source_1.AppDataSource.initialize()
     .then(() => {
     console.log("Data source has been initialized.");
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
     app.use((0, cors_1.default)({
+        origin: true,
         // Allow sending/receiving cookies
         credentials: true
     }));

@@ -25,6 +25,18 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Number)
 ], User.prototype, "coins", void 0);
 tslib_1.__decorate([
+    (0, typeorm_1.Column)(),
+    tslib_1.__metadata("design:type", String)
+], User.prototype, "gender", void 0);
+tslib_1.__decorate([
+    (0, typeorm_1.Column)(),
+    tslib_1.__metadata("design:type", Boolean)
+], User.prototype, "join_newsletter", void 0);
+tslib_1.__decorate([
+    (0, typeorm_1.Column)(),
+    tslib_1.__metadata("design:type", Boolean)
+], User.prototype, "join_coin_program", void 0);
+tslib_1.__decorate([
     (0, typeorm_1.OneToMany)(() => Book_1.Book, book => book.dummyField, { eager: true }),
     tslib_1.__metadata("design:type", Array)
 ], User.prototype, "books", void 0);

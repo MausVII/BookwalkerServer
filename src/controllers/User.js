@@ -8,13 +8,14 @@ const bcryptjs_1 = tslib_1.__importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = require("jsonwebtoken");
 const typeorm_1 = require("typeorm");
 const Register = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
-    const { email, password, confirm_password } = req.body;
-    if (password !== confirm_password)
-        return res.status(400).send({ message: "Passwords do not match" });
+    const { email, password, gender, join_newsletter, join_coin_program } = req.body;
     const user = new User_1.User();
     user.email = email;
     user.password = yield bcryptjs_1.default.hash(password, 12);
     user.coins = 1000;
+    user.gender = gender;
+    user.join_newsletter = join_newsletter;
+    user.join_coin_program = join_coin_program;
     user.books = [];
     yield data_source_1.AppDataSource.manager.save(user);
     const { password: _ } = user, data = tslib_1.__rest(user, ["password"]);
@@ -42,7 +43,7 @@ const Login = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* 
         httpOnly: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-    res.send({ message: "Success" });
+    res.send({ message: "Login successful" });
 });
 exports.Login = Login;
 const getAuthUser = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
@@ -51,8 +52,9 @@ const getAuthUser = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, func
             return res.status(500).send({ message: "Server error" });
         const cookie = req.cookies['access_token'];
         const payload = (0, jsonwebtoken_1.verify)(cookie, process.env.ACCESS_SECRET);
-        if (!payload)
+        if (!payload) {
             return res.status(401).send({ message: "Unathenticated" });
+        }
         let id;
         try {
             id = parseInt(payload.id);
@@ -71,7 +73,7 @@ const getAuthUser = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, func
         res.send(data);
     }
     catch (error) {
-        return res.status(401).send({ message: "Unauthenticated" });
+        return res.status(401).send({ message: error });
     }
 });
 exports.getAuthUser = getAuthUser;

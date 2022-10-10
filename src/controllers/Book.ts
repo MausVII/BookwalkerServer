@@ -27,14 +27,12 @@ export const getBook = async(req: Request, res: Response) => {
 }
 
 export const getBooks = async (req: Request, res: Response) => {
-    console.log("Here")
     const books = await AppDataSource.getRepository(Book).find()
 
     res.status(200).send(books)
 }
 
 export const getVolsOne = async (req: Request, res: Response) => {
-    console.log("Here")
     const books = await AppDataSource.getRepository(Book).find({
         where: {
             volume: Equal(1)
@@ -99,7 +97,6 @@ export const getHighestRanked = async (req: Request, res: Response) => {
 
 export const getHighestRankedMonthly = async (req: Request, res:Response) => {
     const month = new Date(new Date().getFullYear(), new Date().getMonth())
-    console.log(month)
     const books = await AppDataSource.getRepository(Book).find({
         where: {
             release_date: MoreThan(month)

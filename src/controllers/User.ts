@@ -8,15 +8,15 @@ import { JwtPayload, sign, verify } from "jsonwebtoken";
 import { Equal } from "typeorm";
 
 export const Register = async (req: Request, res: Response) => {
-    const {email, password, confirm_password} = req.body
-
-    if(password !== confirm_password)
-        return res.status(400).send({ message: "Passwords do not match"})
+    const {email, password, gender, join_newsletter, join_coin_program} = req.body
 
     const user = new User()
     user.email = email
     user.password = await bcryptjs.hash(password, 12)
     user.coins = 1000
+    user.gender = gender
+    user.join_newsletter = join_newsletter
+    user.join_coin_program = join_coin_program
     user.books = []
 
     await AppDataSource.manager.save(user)
@@ -54,7 +54,7 @@ export const Login = async (req: Request, res: Response) => {
         maxAge: 7 * 24 * 60 * 60 * 1000,
     })
 
-    res.send({ message: "Success" })
+    res.send({ message: "Login successful" })
 }
 
 export const getAuthUser = async (req: Request, res: Response) => {
@@ -66,8 +66,9 @@ export const getAuthUser = async (req: Request, res: Response) => {
         const payload = verify(cookie, process.env.ACCESS_SECRET!) as JwtPayload
     
 
-        if (!payload)
+        if (!payload) {
             return res.status(401).send({ message: "Unathenticated" })
+        }
     
         let id
         try {
@@ -90,7 +91,7 @@ export const getAuthUser = async (req: Request, res: Response) => {
         res.send(data)
     }
     catch (error) {
-        return res.status(401).send({ message: "Unauthenticated"})
+        return res.status(401).send({ message: error})
     }
 }
 

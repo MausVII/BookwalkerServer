@@ -17,6 +17,15 @@ export class User {
     @Column()
     coins!: number
 
+    @Column()
+    gender!: string
+
+    @Column()
+    join_newsletter!: boolean
+
+    @Column()
+    join_coin_program!: boolean
+
     @OneToMany(() => Book, book => book.dummyField, {eager: true})
     books!: Book[]
 }

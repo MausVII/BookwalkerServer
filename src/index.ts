@@ -5,7 +5,6 @@ import { AppDataSource } from "./data-source"
 import { routes } from "./routes"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-console.log(process.env.RDS_HOSTNAME!)
 AppDataSource.initialize()
 .then(() => {
     console.log("Data source has been initialized.")
@@ -13,6 +12,7 @@ AppDataSource.initialize()
 
     app.use(express.json())
     app.use(cors({
+        origin: true,
         // Allow sending/receiving cookies
         credentials: true
     }))

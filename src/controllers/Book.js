@@ -24,13 +24,11 @@ const getBook = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function
 });
 exports.getBook = getBook;
 const getBooks = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
-    console.log("Here");
     const books = yield data_source_1.AppDataSource.getRepository(Book_1.Book).find();
     res.status(200).send(books);
 });
 exports.getBooks = getBooks;
 const getVolsOne = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
-    console.log("Here");
     const books = yield data_source_1.AppDataSource.getRepository(Book_1.Book).find({
         where: {
             volume: (0, typeorm_1.Equal)(1)
@@ -89,7 +87,6 @@ const getHighestRanked = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0,
 exports.getHighestRanked = getHighestRanked;
 const getHighestRankedMonthly = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const month = new Date(new Date().getFullYear(), new Date().getMonth());
-    console.log(month);
     const books = yield data_source_1.AppDataSource.getRepository(Book_1.Book).find({
         where: {
             release_date: (0, typeorm_1.MoreThan)(month)
